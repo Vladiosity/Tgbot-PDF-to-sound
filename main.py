@@ -5,7 +5,9 @@ from getmp3 import pdf_tomp3
 
 
 def main():
-    print(pdf_tomp3(file_path='fff.txt'))
+    filename = input('имя файла пж:')
+    lang = input('язык пж')
+    print(pdf_tomp3(file_path=filename, lang=lang))
 
 
 if __name__ == '__main__':

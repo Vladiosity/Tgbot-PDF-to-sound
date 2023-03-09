@@ -24,7 +24,6 @@ def pdf_tomp3(file_path='test.pdf', lang='en'):
         # имя файла делаем
         mp3_name = Path(file_path).stem
         my_mp3.save(f'{mp3_name}.mp3')
-        #return 'ВСЕ!'
 
         #ТУТ САМ ДЕЛАЛ, НО ПО АНАЛОГИИ С ОРИГ ВИДОСОМ
     elif Path(file_path).is_file() and Path(file_path).suffix == '.txt':
