@@ -5,7 +5,7 @@ from getmp3 import pdf_tomp3
 
 
 def main():
-    print(pdf_tomp3())
+    print(pdf_tomp3(file_path='fff.txt'))
 
 
 if __name__ == '__main__':

@@ -23,7 +23,18 @@ def pdf_tomp3(file_path='test.pdf', lang='en'):
         my_mp3 = gTTS(text=txt, lang=lang)
         # имя файла делаем
         mp3_name = Path(file_path).stem
-        my_mp3.save(f'{file_path}.mp3')
-        return 'ВСЕ!'
+        my_mp3.save(f'{mp3_name}.mp3')
+        #return 'ВСЕ!'
+
+        #ТУТ САМ ДЕЛАЛ, НО ПО АНАЛОГИИ С ОРИГ ВИДОСОМ
+    elif Path(file_path).is_file() and Path(file_path).suffix == '.txt':
+        with open(f'{file_path}', mode='r') as txfile:
+            textline = txfile.read()
+        textline = textline.replace('\n', ' ')
+        with open('filetxt.txt', mode='w') as txf:
+            txf.write(textline)
+        my_mp3 = gTTS(text=textline, lang=lang)
+        mp3_name = Path(file_path).stem
+        my_mp3.save(f'{mp3_name}.mp3')
     else:
         return 'нет такого'
