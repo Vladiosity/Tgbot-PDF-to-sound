@@ -2,7 +2,7 @@ from getmp3 import pdf_tomp3
 import telebot
 from pathlib import Path
 
-token = '5839887390:AAFQi0mI1Vw-Mur0sHmPE3kuYpyZaRExLns'
+token = 'ваш токен'
 
 bot = telebot.TeleBot(token)
 
