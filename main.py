@@ -1,7 +1,5 @@
 from getmp3 import pdf_tomp3
 import telebot
-from pathlib import Path
-
 token = 'ваш токен'
 
 bot = telebot.TeleBot(token)
