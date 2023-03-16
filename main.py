@@ -1,6 +1,6 @@
 from getmp3 import pdf_tomp3
 import telebot
-token = 'ваш токен'
+token = 'Ваш токен'
 
 bot = telebot.TeleBot(token)
 
@@ -32,7 +32,7 @@ def handle_docs_photo(message):
 
     @bot.message_handler(content_types=['text'])
     def on_message(message):
-        text = message.text
+        text = message.text.lower()
         try:
             mp3_name = pdf_tomp3(file_path=src, lang=f'{text}')
             bot.send_document(chat_id, open(f'{mp3_name}.mp3', 'rb'))
