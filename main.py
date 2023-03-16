@@ -34,10 +34,12 @@ def handle_docs_photo(message):
 
     @bot.message_handler(content_types=['text'])
     def on_message(message):
-        chat_id = message.chat.id
         text = message.text
-        mp3_name = pdf_tomp3(file_path=src, lang=f'{text}')
-        bot.send_document(chat_id, open(f'{mp3_name}.mp3', 'rb'))
+        try:
+            mp3_name = pdf_tomp3(file_path=src, lang=f'{text}')
+            bot.send_document(chat_id, open(f'{mp3_name}.mp3', 'rb'))
+        except:
+            bot.send_message(chat_id, 'Чета вы напутали..... Попробуйте еще разок!)')
 
 
 def main():
