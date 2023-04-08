@@ -1,8 +1,17 @@
-from getmp3 import pdf_tomp3
+from getmp3 import pdf_tomp3, message_text_to_mp3
 import telebot
-token = 'Ваш токен'
+import os
+token = '5839887390:AAFQi0mI1Vw-Mur0sHmPE3kuYpyZaRExLns'
 
 bot = telebot.TeleBot(token)
+
+
+@bot.message_handler(commands=['help'])
+def on_help(message):
+    bot.send_message(message.chat.id, 'Вот список того, что я могу: отправьте мне файл в формате .pdf или .txt, и я скину вам mp3 с содержимым '
+                                      'файла, вы также можеет выбрать язык, по умолчанию английский (en), но вы можете сделать русский (ru).'
+                                      'Также я могу проxитать ваше сообщение выбраным языком, для этого отправьте собщение с таким синтаксисом:'
+                                      '"Прочитай на (выберите русский или английский): ВАШЕ СООБЩЕНИЕ"(ковычки не нужны)')
 
 
 @bot.message_handler(commands=['start'])
@@ -38,6 +47,23 @@ def handle_docs_photo(message):
             bot.send_document(chat_id, open(f'{mp3_name}.mp3', 'rb'))
         except:
             bot.send_message(chat_id, 'Чета вы напутали..... Попробуйте еще разок!)')
+
+
+@bot.message_handler(content_types=['text'])
+def on_simple_text(message):
+    text = message.text
+    if 'Прочитай на русском:' in text:
+        mp3_name = pdf_tomp3(message_text_to_mp3(text.split(': ')[1]), 'ru')
+        bot.send_document(message.chat.id, open(f'{mp3_name}.mp3', 'rb'))
+        os.remove(message_text_to_mp3(text.split(': ')[1]))
+        os.remove(f'{mp3_name}.mp3')
+    elif 'Прочитай на английском:' in text:
+        mp3_name = pdf_tomp3(message_text_to_mp3(text.split(': ')[1]), 'en')
+        bot.send_document(message.chat.id, open(f'{mp3_name}.mp3', 'rb'))
+        os.remove(message_text_to_mp3(text.split(': ')[1]))
+        os.remove(f'{mp3_name}.mp3')
+    else:
+        bot.send_message(message.chat.id, 'Я бы мог с вами пообщаться, если бы мой создатель дорбавил мне такой функциолнал(')
 
 
 def main():

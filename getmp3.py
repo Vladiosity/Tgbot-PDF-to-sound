@@ -39,3 +39,8 @@ def pdf_tomp3(file_path='test.pdf', lang='en'):
         return mp3_name
     else:
         return 'нет такого'
+
+def message_text_to_mp3(text):
+    with open('new_text.txt', mode='w') as nt:
+        nt.write(text)
+    return 'new_text.txt'
