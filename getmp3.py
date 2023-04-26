@@ -50,6 +50,6 @@ def new_one(text_message):
     new_pdf = FPDF(orientation='L', format='A4')
     new_pdf.add_page()
     new_pdf.set_font("Times-Roman", size=14)
-    new_pdf.cell(40, 10, text_message, 1)
+    new_pdf.cell(200, 20, text_message, 1)
     new_pdf.output("data/your_text.pdf")
     return "data/your_text.pdf"
