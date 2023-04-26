@@ -62,6 +62,10 @@ def on_simple_text(message):
         bot.send_document(message.chat.id, open(f'{mp3_name}.mp3', 'rb'))
         os.remove(message_text_to_mp3(text.split(': ')[1]))
         os.remove(f'{mp3_name}.mp3')
+    elif 'Сделай пдф:' in text:
+        
+        new_pdf = txttopdf.new_one(text)
+        bot.send_document(new_pdf)
     else:
         bot.send_message(message.chat.id, 'Я бы мог с вами пообщаться, если бы мой создатель дорбавил мне такой функциолнал(')
 
