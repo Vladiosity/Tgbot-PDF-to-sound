@@ -1,7 +1,7 @@
-from getmp3 import pdf_tomp3, message_text_to_mp3
+from getmp3 import pdf_tomp3, message_text_to_mp3, new_one
 import telebot
 import os
-token = 'ваш токен'
+token = '5839887390:AAFQi0mI1Vw-Mur0sHmPE3kuYpyZaRExLns'
 
 bot = telebot.TeleBot(token)
 
@@ -63,9 +63,12 @@ def on_simple_text(message):
         os.remove(message_text_to_mp3(text.split(': ')[1]))
         os.remove(f'{mp3_name}.mp3')
     elif 'Сделай пдф:' in text:
-        
-        new_pdf = txttopdf.new_one(text)
-        bot.send_document(new_pdf)
+        try:
+
+            bot.send_document(message.chat.id, open(f"{new_one(text.split(': ')[1])}", 'rb'))
+            os.remove(new_one(text))
+        except UnicodeEncodeError:
+            pass
     else:
         bot.send_message(message.chat.id, 'Я бы мог с вами пообщаться, если бы мой создатель дорбавил мне такой функциолнал(')
 

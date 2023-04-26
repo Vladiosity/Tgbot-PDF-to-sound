@@ -1,6 +1,8 @@
 import pdfplumber
 from gtts import gTTS
 from pathlib import Path
+from fpdf import FPDF
+
 
 
 # ORIGINAL CODE https://youtu.be/Q0lHb-FCATk
@@ -46,9 +48,9 @@ def message_text_to_mp3(text):
     return 'new_text.txt'
 
 def new_one(text_message):
-    new_pdf = FPDF(orientation='L', format='A4')
+    new_pdf = FPDF()
     new_pdf.add_page()
-    new_pdf.set_font("Times-Roman", size=14)
-    new_pdf.cell(40, 10, text_message, 1)
-    new_pdf.output("data/your_text.pdf")
-    return "data/your_text.pdf"
+    new_pdf.set_font("times", size=14)
+    new_pdf.cell(200, 10, text_message, ln=1, align='L')
+    new_pdf.output("your_text.pdf")
+    return "your_text.pdf"
