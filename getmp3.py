@@ -1,6 +1,7 @@
 import pdfplumber
 from gtts import gTTS
 from pathlib import Path
+from fpdf import FPDF
 
 
 # ORIGINAL CODE https://youtu.be/Q0lHb-FCATk
