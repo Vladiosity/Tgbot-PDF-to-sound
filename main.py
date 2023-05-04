@@ -1,7 +1,7 @@
 from getmp3 import pdf_tomp3, message_text_to_mp3, new_one
 import telebot
 import os
-token = '5839887390:AAFQi0mI1Vw-Mur0sHmPE3kuYpyZaRExLns'
+token = 'ваш токен'
 
 bot = telebot.TeleBot(token)
 
